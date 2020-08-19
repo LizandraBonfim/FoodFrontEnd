@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import img from './assets/avaliacao.ico';
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
@@ -81,6 +82,22 @@ export const AnimeLeft = styled.div`
 
 `;
 
+export const Avaliacao = styled.span`
+  > p{
+            align-items: center;
+            display: flex;
+            padding: 0 .5rem;
+
+        &::before{
+                content: '';
+                margin-right: .2rem;
+                background: url(${img}) no-repeat center center;
+                display: block;
+                width: 31px;
+                height: 33px;
+            }
+        }
+`;
 
 
 
