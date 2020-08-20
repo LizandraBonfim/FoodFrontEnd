@@ -5,6 +5,7 @@ import { api } from '../../services/api';
 import { RestauranteContext } from '../../RestauranteContext';
 import { Avaliacao } from '../../styles';
 import { HeaderContainer, Content, Section } from './styles';
+import RestauranteMenu from './RestauranteMenu';
 
 
 
@@ -82,6 +83,8 @@ function RestauranteHeader() {
                     </>
                 )}
             </HeaderContainer>
+            {data && <RestauranteMenu item={data} />}
+
 
         </>
     )

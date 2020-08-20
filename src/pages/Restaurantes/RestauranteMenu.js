@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { AnimeLeft } from '../../styles';
 
 import { RestauranteContainer } from './styles';
@@ -6,7 +6,7 @@ import { RestauranteContainer } from './styles';
 function RestauranteMenu({ item }) {
 
 
-
+    console.log(`item menu`, item)
 
     return (
         <AnimeLeft>

@@ -1,11 +1,15 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import RestauranteHeader from './RestauranteHeader'
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import RestauranteHeader from './RestauranteHeader';
 import RestauranteAvaliacao from './RestauranteAvaliacao';
 import Restaurante from './Restaurante';
 import RestauranteMenu from './RestauranteMenu';
 
 function route() {
+
+
+
     return (
         <Routes>
 

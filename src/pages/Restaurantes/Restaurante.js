@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { api } from '../../services/api';
 
 import { ReactComponent as Lupa } from '../../assets/lupa.svg';
@@ -32,7 +31,6 @@ function Restaurante() {
 
 
 
-    if (error) return null;
     return (
 
         <HomeContainer>
