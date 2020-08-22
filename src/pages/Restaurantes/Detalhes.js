@@ -16,8 +16,6 @@ function Detalhes({ item }) {
 
     }
 
-    console.log()
-
     return (
 
 

@@ -57,8 +57,16 @@ export const HeaderContainer = styled.section`
             display: grid;
             grid-template-columns: 1fr 1fr;
             text-align: center;
-            padding: .8rem;
             box-shadow: 0px -1px 0 rgba(0 ,0,0,0.2);
+
+            a{
+
+                padding: .8rem;
+
+                &.active{    
+                    border-bottom: 2px solid #c04134;
+                    }
+            }
             
         }
         
@@ -84,20 +92,60 @@ export const Section = styled.section`
 
 export const RestauranteContainer = styled.section`
     display: grid;
-    grid-template-columns: 18rem auto;
+    grid-template-columns: auto auto;
+    margin-top: 1rem;
     gap: 1rem;
+
+    section{
+
     padding: .5rem;
     border-radius: .5rem;
-    margin-top: 1rem;
     background: #fff;
+    display: flex;
+    }
 
     img{
-        width: 50%;
+        width: 11rem;
     }
 
     div{
         line-height: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     
+`;
+
+export const Reviews = styled.section`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    img{
+        width: 50px;
+    }
+
+
+    > div{
+        padding: 1rem;
+        border-radius: .5rem;
+        background: #fff;
+        color: #333;
+    
+        >div{
+        margin-bottom: 1rem;
+        box-shadow: 0px 1px 0px rgba(0,0,0,0.3);
+        }
+    }
+
+    
+
+  
+`;
+
+export const Card = styled.section`    
+   
 `;

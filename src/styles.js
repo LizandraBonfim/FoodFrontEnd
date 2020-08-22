@@ -4,6 +4,7 @@ import img from './assets/avaliacao.ico';
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+
   *{
     padding: 0;
     margin: 0;
@@ -53,7 +54,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Container = styled.section`
-    max-width: 60rem;
+    max-width: 70rem;
     padding: 0 1rem;
     margin: auto;
 

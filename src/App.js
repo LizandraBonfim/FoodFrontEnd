@@ -6,9 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/index.js';
 import Restaurantes from './pages/Restaurantes/Restaurante';
-import RestauranteHeader from './pages/Restaurantes/RestauranteHeader.js';
-import RestauranteAvaliacao from './pages/Restaurantes/RestauranteAvaliacao.js';
-import Rooouter from './pages/Restaurantes/route.js';
+import Rooouter from './pages/Restaurantes/rotas.js';
 
 
 function App() {
@@ -25,9 +23,6 @@ function App() {
             <Route path="/" end element={<Home />} />
             <Route path="restaurantes/*" element={<Rooouter />} />
 
-            {/* <Route path="restaurantes" element={<Restaurantes />} />
-            <Route path="restaurantes/:id" element={<RestauranteHeader />} />
-            <Route path="restaurantes/:id/reviews" element={<RestauranteAvaliacao />} /> */}
           </Routes>
 
         </MainContainer>

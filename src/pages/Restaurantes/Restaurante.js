@@ -5,6 +5,7 @@ import { ReactComponent as Lupa } from '../../assets/lupa.svg';
 import { AnimeLeft } from '../../styles';
 import { HomeContainer, Content } from './styles';
 import Detalhes from './Detalhes';
+import Erros from '../../components/erros';
 
 
 function Restaurante() {
@@ -52,6 +53,7 @@ function Restaurante() {
                 ))}
             </ul>
 
+            {error && <Erros erro={error} />}
         </HomeContainer >
 
     )

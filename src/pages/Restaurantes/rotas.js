@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import RestauranteHeader from './RestauranteHeader';
@@ -11,14 +11,18 @@ function route() {
 
 
     return (
-        <Routes>
 
-            <Route path="/" element={<Restaurante />} />
-            <RestauranteHeader>
+        <div>
+
+            <RestauranteHeader />
+            <Routes>
+
+                <Route path="/" element={<Restaurante />} />
                 <Route path="/:id/menu" element={<RestauranteMenu />} />
                 <Route path="/:id/reviews" element={<RestauranteAvaliacao />} />
-            </RestauranteHeader>
-        </Routes>
+
+            </Routes>
+        </div>
     )
 }
 
