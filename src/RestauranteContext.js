@@ -6,9 +6,13 @@ function ContainerRestaurante({ children }) {
 
     const [restaurante, setRestaurante] = useState();
 
+    const [produtos, setProdutos] = useState([]);
+
+    console.log('produtos', produtos)
 
 
-    return <RestauranteContext.Provider value={{ setRestaurante, restaurante }}>
+
+    return <RestauranteContext.Provider value={{ setRestaurante, restaurante, setProdutos, produtos }}>
         {children}
     </RestauranteContext.Provider>
 }

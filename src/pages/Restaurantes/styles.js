@@ -29,8 +29,26 @@ export const HomeContainer = styled.section`
             margin-bottom: 1rem;
         }
 
+        @media(max-width: 60rem){
+            strong{
+                word-break: break-all;
+                text-transform: capitalize;
+                font-size: 15px;
+            }
+        }
+
         
     
+    }
+
+    @media(max-width: 60rem){
+        ul{
+            grid-template-columns: 1fr;
+
+            li div{
+            line-height: 2;
+        }
+        }
     }
 `;
 
@@ -87,36 +105,80 @@ export const Section = styled.section`
         display: block;
         line-height: 2;
     }
+
+    @media(max-width: 60rem){
+        grid-template-columns: 1fr;
+        gap: 0rem;
+
+
+    }
     
 `;
 
 export const RestauranteContainer = styled.section`
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 2fr minmax(50px, 1fr);
     margin-top: 1rem;
     gap: 1rem;
 
-    section{
-
-    padding: .5rem;
-    border-radius: .5rem;
-    background: #fff;
-    display: flex;
-    }
+   
 
     img{
         width: 11rem;
     }
 
-    div{
+    div {
         line-height: 2;
-        display: grid;
+        
+        section + section {
+            margin-top: 1rem;
+        }
+    }
+
+    @media(max-width: 60rem){
         grid-template-columns: 1fr;
-        gap: 1rem;
+
+        img{
+            height: 100%;
+        }
+        
     }
 
     
 `;
+
+export const RestauranteSection = styled.section`
+    padding: .5rem;
+    border-radius: .5rem;
+    background: #fff;
+    display: flex;
+
+
+    button{
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin-top: 1rem;
+        padding: 5px;
+        transition: .2s;
+        
+        &:hover{
+            background: #1fd61f;
+            border-radius: 5px;
+        }
+    }
+
+    @media(max-width: 60rem){
+    padding: 0rem;
+
+    
+
+    }
+
+`;
+
+
 
 export const Reviews = styled.section`
     display: grid;
@@ -137,8 +199,13 @@ export const Reviews = styled.section`
     
         >div{
         margin-bottom: 1rem;
-        box-shadow: 0px 1px 0px rgba(0,0,0,0.3);
+        border-bottom: 1px solid #eee;
         }
+    }
+
+    @media(max-width:60rem){
+        grid-template-columns: 1fr;
+        
     }
 
     
@@ -146,6 +213,56 @@ export const Reviews = styled.section`
   
 `;
 
-export const Card = styled.section`    
+export const Card = styled.section`
+
+   width: 100%;
+   display: block;
+   background: #fff;
+   border-radius: .5rem;
    
+   h1{
+        box-shadow: 0px 1px 0 rgba(0 ,0,0,0.2);
+        text-align: center;
+        font-size: 1.3rem;
+   }
+
+   span{
+       padding: 1rem;
+   }
+
+   aside{
+
+       li + li{
+            border-top: 1px solid #eee;
+        }
+
+       div{
+            margin: 0 1rem;
+            padding: 5px 1rem;
+            display: flex;
+            justify-content: space-between;
+       }
+       button{
+            width: 100%;
+            background: #00a65a;
+            border: none;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            padding: 5px;
+            transition: .2s;
+            border-radius: 5px;
+
+            &:first-child{
+                background: #dd4b39;
+                margin-right: 1rem;
+            }
+
+            &:hover{
+                opacity: .6;
+            }
+       }
+   }
 `;
+

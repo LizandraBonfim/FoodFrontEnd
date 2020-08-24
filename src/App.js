@@ -5,8 +5,9 @@ import ContainerRestaurante from './RestauranteContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/index.js';
-import Restaurantes from './pages/Restaurantes/Restaurante';
 import Rooouter from './pages/Restaurantes/rotas.js';
+import Login from './pages/User/login.js';
+import FinalizarCompra from './pages/User/FinalizarCompra.js';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
 
           <Routes>
             <Route path="/" end element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/finalizar" element={<FinalizarCompra />} />
             <Route path="restaurantes/*" element={<Rooouter />} />
 
           </Routes>

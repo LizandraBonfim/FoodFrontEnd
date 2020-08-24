@@ -37,4 +37,12 @@ margin-top: 5rem;
         }
         
     }
+
+    @media(max-width: 60rem){
+        h1{
+        font-size: 1.5rem;
+       
+
+    }
+    }
 `;

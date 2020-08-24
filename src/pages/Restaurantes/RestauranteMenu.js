@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaPlusCircle } from 'react-icons/fa';
 import { api } from '../../services/api';
@@ -6,7 +6,8 @@ import Erros from '../../components/erros';
 import Carrinho from './Carrinho';
 import { AnimeLeft } from '../../styles';
 
-import { RestauranteContainer, Card } from './styles';
+import { RestauranteContainer, RestauranteSection } from './styles';
+import { RestauranteContext } from '../../RestauranteContext';
 
 function RestauranteMenu() {
 
@@ -15,6 +16,7 @@ function RestauranteMenu() {
     const [error, setError] = useState(false);
 
     const { id } = useParams();
+    const { setProdutos } = useContext(RestauranteContext);
 
 
     console.log('menuu', data)
@@ -44,6 +46,13 @@ function RestauranteMenu() {
 
     }, [id]);
 
+    function handleClick(item) {
+        console.log('cliquei');
+
+        console.log('item', item);
+        setProdutos((itens) => [...itens, item]);
+    }
+
     if (!data) return <Erros erro={error} />
 
     return (
@@ -53,7 +62,7 @@ function RestauranteMenu() {
 
                     {data.map(item => (
 
-                        <section>
+                        <RestauranteSection key={item.id}>
                             <img src={require(`../../${item.imagePath}`)}
                                 alt={item.name} />
 
@@ -62,20 +71,22 @@ function RestauranteMenu() {
                                 <p>{item.description}</p>
                                 <strong> {item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>
 
-                                <p >
+
+                                <button onClick={() => handleClick(item)}>
                                     <FaPlusCircle />
-                                Adicionar
-                                </p>
+                                    Adicionar
+                                </button>
+
                             </div>
 
 
-                        </section>
+                        </RestauranteSection>
                     ))}
                 </AnimeLeft>
-                <Card >
 
-                    <Carrinho />
-                </Card>
+
+                <Carrinho />
+
             </RestauranteContainer>
         </>
 
