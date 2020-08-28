@@ -9,13 +9,13 @@ export const Container = styled.div`
         width: 100%;
         padding: .5rem;
         border-radius: .4rem;
-        border: 1px solid #333;
+        border: 1px solid #c3c3c3;
         background: #fff;
         position: relative;
 
     }
 
-    & + div{
+    /* & + div{
         margin-top: 1rem;
-    }
+    } */
 `;

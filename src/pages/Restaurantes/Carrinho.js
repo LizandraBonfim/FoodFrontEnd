@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function Carrinho() {
 
     const navigate = useNavigate();
-    const { produtos, setProdutos } = useContext(RestauranteContext);
+    const { produtos, setProdutos, login } = useContext(RestauranteContext);
     const [valores, setValores] = useState([]);
 
     function Valores(produto) {
@@ -39,7 +39,9 @@ function Carrinho() {
     }
 
     function handleFinalizar() {
-        navigate('/finalizar');
+
+        if (!login) navigate('/login');
+        else navigate('/finalizar');
     }
 
 

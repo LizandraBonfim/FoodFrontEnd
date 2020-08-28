@@ -6,8 +6,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/index.js';
 import Rooouter from './pages/Restaurantes/rotas.js';
-import Login from './pages/User/login.js';
+import Login from './pages/User/Login.js';
 import FinalizarCompra from './pages/User/FinalizarCompra.js';
+import Confirmacao from './pages/User/Confirmacao.js';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
           <Routes>
             <Route path="/" end element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/finalizar" element={<FinalizarCompra />} />
+            <Route path="finalizar" element={<FinalizarCompra />} />
+            <Route path="confirmar" element={<Confirmacao />} />
             <Route path="restaurantes/*" element={<Rooouter />} />
 
           </Routes>

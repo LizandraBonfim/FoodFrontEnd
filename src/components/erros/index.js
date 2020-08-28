@@ -5,10 +5,10 @@ const Err = styled.p`
     color: tomato;
 `;
 
-function Erros({ erro }) {
+function Erros({ error }) {
     return (
         <Err>
-            {erro}
+            {error}
         </Err>
     )
 }
