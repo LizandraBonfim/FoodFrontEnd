@@ -20,9 +20,6 @@ function RestauranteAvaliacao({ item }) {
 
 
 
-    console.log('menuu', data)
-    console.log('id', id);
-
     useEffect(() => {
         async function fetch() {
 
@@ -36,8 +33,6 @@ function RestauranteAvaliacao({ item }) {
                     }
 
                 );
-                // moment(response.data).locale('pt-br').fromNow()
-                console.log('response', response.data);
 
 
                 setData(response.data);

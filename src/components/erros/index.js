@@ -6,6 +6,7 @@ const Err = styled.p`
 `;
 
 function Erros({ error }) {
+
     return (
         <Err>
             {error}

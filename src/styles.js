@@ -83,6 +83,18 @@ export const AnimeLeft = styled.div`
 
 `;
 
+export const Icons = styled.div`
+    align-items: center;
+    text-align: center;
+    display: flex;
+
+    svg {
+      width: 40px;
+      color: #333;
+     
+    }
+`;
+
 export const Avaliacao = styled.span`
   > p{
             align-items: center;

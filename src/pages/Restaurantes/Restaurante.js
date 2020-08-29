@@ -10,8 +10,10 @@ import Erros from '../../components/erros';
 
 function Restaurante() {
 
+
     const [data, setData] = useState();
     const [error, setError] = useState(false);
+
 
     useEffect(() => {
         async function fetch() {

@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 
 import { api } from '../../services/api';
-import { RestauranteContext } from '../../RestauranteContext';
-import { Avaliacao } from '../../styles';
 import Erros from '../../components/erros';
+import { Avaliacao, Icons } from '../../styles';
 import { HeaderContainer, Content, Section } from './styles';
 
 
@@ -17,7 +16,7 @@ function RestauranteHeader() {
 
     const id = temp1['*'].split('/')[0];
 
-    console.log('id', id);
+
 
     const [data, setData] = useState();
     const [error, setError] = useState(false);
@@ -32,7 +31,7 @@ function RestauranteHeader() {
                         id: id
                     }
                 });
-                console.log('olaaaaaaaaaaaaaaaa', response.data[0]);
+
                 setData(response.data[0]);
             } catch{
                 setError("Ocorreu um erro");
@@ -43,8 +42,6 @@ function RestauranteHeader() {
         fetch();
 
     }, [id]);
-
-    console.log('data', data);
 
 
 
@@ -57,10 +54,10 @@ function RestauranteHeader() {
                 {data && (
                     <>
                         <Content>
-                            <div >
-                                <FaHome size={20} color={'#333'} style={{ paddingRight: '2px' }} />
+                            <Icons >
+                                <FaHome />
                                 {data.name}
-                            </div>
+                            </Icons>
                             <Avaliacao>
                                 <p>
                                     {data.rating}

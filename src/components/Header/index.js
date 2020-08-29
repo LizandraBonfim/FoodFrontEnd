@@ -10,8 +10,6 @@ import { RestauranteContext } from '../../RestauranteContext';
 function Header() {
     const { login, setLogin } = useContext(RestauranteContext);
 
-    console.log('login', login)
-
     return (
         <HeaderContainer >
 
@@ -26,7 +24,6 @@ function Header() {
                     ? <p>Ola, user | <Link onClick={() => setLogin(false)} to="/login">Sair</Link></p>
                     : <Link to="/login"> <p>Entrar</p></Link>
                 }
-
 
             </Container>
         </HeaderContainer>

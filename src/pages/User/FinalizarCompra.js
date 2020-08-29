@@ -1,22 +1,33 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaCreditCard } from 'react-icons/fa';
+
 import cart from '../../assets/cart.png';
 
 import Input from '../../components/Input';
 import Error from '../../components/erros';
-import { AnimeLeft } from '../../styles';
-import { Container, HomeFinalizar, Grid, Paragrafo, Radio, HomeContainer } from './styles';
 import useForm from '../../hooks/useForm';
+
 import { RestauranteContext } from '../../RestauranteContext';
+import { AnimeLeft } from '../../styles';
+import { Content } from '../Restaurantes/styles';
+import {
+    Container,
+    HomeFinalizar,
+    Grid,
+    Paragrafo,
+    Radio,
+    HomeContainer,
+    Button
+} from './styles';
+import { ToastUser } from '../../ToastContext';
+import { useEffect } from 'react';
 
 function FinalizarCompra() {
     const navigate = useNavigate();
 
-    const { produtos, login } = useContext(RestauranteContext);
-    const [valores, setValores] = useState([]);
+    const { produtos, login, setProdutos } = useContext(RestauranteContext);
 
-    console.log('produtos', produtos)
 
     const nome = useForm();
     const email = useForm('email');
@@ -26,24 +37,79 @@ function FinalizarCompra() {
     const complemento = useForm();
     const formPag = useForm();
 
+    const [valores, setValores] = useState(() => { });
+
     const [error, setError] = useState();
+    const { setMessage } = useContext(ToastUser);
+
 
     useEffect(() => {
-
-        if (produtos.length === 0) return;
-
-        const values = produtos.map(e => parseFloat(e.price)).reduce((a, b) => a + b);
-
-        setValores(values.toFixed(2));
-        console.log('rsrs', values);
+        const values = produtos.map(e => e.subtotal).reduce((a, b) => a + b, 0);
+        setValores(values);
 
 
     }, [produtos]);
 
+    function Valores(produto) {
+
+        if (produto === undefined) return;
+        const price = produto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        return price;
+
+
+    }
+
+
+    function handleMais(item) {
+
+        const produtoIndex = produtos.findIndex(x => x.id === item.id);
+
+        if (produtoIndex !== -1) {
+            produtos[produtoIndex].qtd += 1;
+            setProdutos(x => [...produtos]);
+
+            let produto = produtos[produtoIndex];
+
+            produto.subtotal = produto.qtd * produto.price;
+
+            produtos[produtoIndex] = produto;
+        }
+
+        setMessage({ message: `Item ${item.id} adicionado.` });
+
+
+    }
+
+    function handleMenos(item) {
+        const produtoIndex = produtos.findIndex(x => x.id === item.id);
+
+
+        if (produtoIndex === -1) {
+            return;
+        }
+        let produto = produtos[produtoIndex];
+        produto.qtd -= 1;
+
+        if (produto.qtd >= 1) {
+
+            setProdutos(x => [...produtos]);
+
+
+            produto.subtotal = produto.qtd * produto.price;
+
+            produtos[produtoIndex] = produto;
+        }
+        if (produto.qtd === 0) {
+            produtos.slice(produtoIndex, 1);
+            setProdutos(x => [...produtos].filter(x => x.id !== item.id));
+        }
+        setMessage({ message: `Item ${item.id} removido.` });
+    }
+
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log(formPag.value);
 
         if (!login) {
             navigate('/login');
@@ -54,18 +120,20 @@ function FinalizarCompra() {
             endereco.validate() && numero.validate() && complemento.validate() && formPag.validate()) {
 
             if (email.value !== confirmacao_email.value) {
-                setError('Os emails não combinam.');
+                setMessage({ message: 'Os emails não combinam..' });
+
+
             }
 
             setError(false);
-            console.log('Compra efetuada com sucesso!');
-            navigate('/confirmacao');
+            navigate('/confirmar');
+            setMessage({ message: 'Compra efetuada com sucesso!' })
             return 'Compra efetuada com sucesso!';
         }
     }
 
 
-    if (produtos.length === 0) {
+    if (produtos.length === 0 || produtos === undefined) {
         return (
 
             <HomeContainer>
@@ -81,6 +149,7 @@ function FinalizarCompra() {
 
     return (
         <Container>
+
             <HomeFinalizar onSubmit={handleSubmit}>
                 <h1>Finalize seu pedido:</h1>
                 <AnimeLeft>
@@ -108,11 +177,11 @@ function FinalizarCompra() {
                         <Input placeholder="Complemento" type="text" id="complemento" name="complemento" {...complemento} />
 
                     </Grid>
-                    {produtos.length === 0 &&
-                        <Paragrafo> Carrinho vazio, <Link to="/restaurantes"> clique aqui </Link> para realizar uma compra.
 
-                        </Paragrafo>}
                     <Paragrafo>Itens do pedido:</Paragrafo>
+
+
+
 
                     <div >
                         <table>
@@ -124,17 +193,26 @@ function FinalizarCompra() {
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {produtos.map(item => (
+
+                            {produtos.map(item => (
+                                <tbody>
                                     <tr key={item.id}>
-                                        <td>-1+</td>
+                                        <td>
+                                            <Content>
+
+                                                <button onClick={() => handleMenos(item)}> - </button>
+                                                {item.qtd}
+                                                <button onClick={() => handleMais(item)}> + </button>
+                                            </Content>
+                                        </td>
                                         <td>{item.name}</td>
                                         <td>{item.description}</td>
-                                        <td>{item.price}</td>
+                                        <td>{item.subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                                     </tr>
-                                ))}
 
-                            </tbody>
+                                </tbody>
+                            ))}
+
                         </table>
                     </div>
                     <Grid>
@@ -170,7 +248,7 @@ function FinalizarCompra() {
 
                                 <li>
                                     <strong>Itens:</strong>
-                                    <p>R$ {valores || 0.00}</p>
+                                    <p> {Valores(valores) || 0.00}</p>
                                 </li>
                                 <li>
                                     <strong>Frete:</strong>
@@ -178,20 +256,23 @@ function FinalizarCompra() {
                                 </li>
                                 <li>
                                     <strong>Total:</strong>
-                                    <p>{(parseFloat(valores) + 8).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) || 0.00}</p>
+                                    <p>{Valores((parseFloat(valores)) + 8) || 0.00}</p>
                                 </li>
                             </ul>
+
 
                         </div>
                     </Grid>
 
 
-                    <button>
+
+                    <Button>
                         <FaCreditCard />
                         Finalizar Pedido
-                    </button>
+                    </Button>
 
                 </AnimeLeft>
+
 
                 <Error error={error} />
             </HomeFinalizar>

@@ -121,15 +121,17 @@ export const RestauranteContainer = styled.section`
     margin-top: 1rem;
     gap: 1rem;
 
-   
+    position: relative;
+    z-index: 2;
 
     img{
         width: 11rem;
+        border-radius: .5rem 0 0 .5rem;
     }
 
     div {
-        line-height: 2;
         
+
         section + section {
             margin-top: 1rem;
         }
@@ -141,18 +143,29 @@ export const RestauranteContainer = styled.section`
         img{
             height: 100%;
         }
+
+        div {line-height: 1; margin-top: 1rem;}
         
     }
 
     
 `;
 
+export const Div = styled.div`
+    line-height: 2;
+    margin-left: 3rem;
+`;
+
 export const RestauranteSection = styled.section`
-    padding: .5rem;
+    
     border-radius: .5rem;
     background: #fff;
     display: flex;
 
+    /* div{
+        line-height: 2;
+        margin-left: 3rem;
+    } */
 
     button{
         background: none;
@@ -170,9 +183,8 @@ export const RestauranteSection = styled.section`
     }
 
     @media(max-width: 60rem){
-    padding: 0rem;
-
-    
+        padding: 0rem;
+        button {margin-bottom: 0.8rem;}
 
     }
 
@@ -219,9 +231,13 @@ export const Card = styled.section`
    display: block;
    background: #fff;
    border-radius: .5rem;
+
+   div:first-child{
+        box-shadow: 0px 1px 0 rgba(0 ,0,0,0.2);
+
+   }
    
    h1{
-        box-shadow: 0px 1px 0 rgba(0 ,0,0,0.2);
         text-align: center;
         font-size: 1.3rem;
    }
@@ -253,6 +269,12 @@ export const Card = styled.section`
             padding: 5px;
             transition: .2s;
             border-radius: 5px;
+            display: flex;
+            justify-content: center;
+
+            svg{
+                padding-right: 5px;
+            }
 
             &:first-child{
                 background: #dd4b39;
@@ -264,5 +286,9 @@ export const Card = styled.section`
             }
        }
    }
+
+   @media(max-width: 60rem){
+        button{font-size: 12px;font-weight: bold;}
+    }
 `;
 

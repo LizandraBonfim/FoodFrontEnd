@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaTrashAlt, FaCreditCard } from 'react-icons/fa';
 
 import { RestauranteContext } from '../../RestauranteContext';
-import { AnimeLeft } from '../../styles';
+import { AnimeLeft, Icons } from '../../styles';
 import { Card, Content } from './styles';
-import { useNavigate } from 'react-router-dom';
 
 function Carrinho() {
 
@@ -24,10 +24,9 @@ function Carrinho() {
 
         if (produtos.length === 0) return;
 
-        const values = produtos.map(e => parseFloat(e.price)).reduce((a, b) => a + b);
+        const values = produtos.map(e => parseFloat(e.price) * e.qtd).reduce((a, b) => a + b);
 
         setValores(values.toFixed(2));
-        console.log('rsrs', values);
 
 
     }, [produtos]);
@@ -42,25 +41,29 @@ function Carrinho() {
 
         if (!login) navigate('/login');
         else navigate('/finalizar');
+
+
+
     }
 
 
     return (
-        <AnimeLeft>
+        <AnimeLeft style={{ position: 'relative', zIndex: '-1' }}>
             <Card>
+                <Icons>
 
-                <h1>
-                    <FaShoppingCart size={20} color={'#333'} style={{ paddingRight: '2px' }} />
-
-                Carrinho
+                    <h1>
+                        <FaShoppingCart />
+                        Carrinho
                  </h1>
+                </Icons>
 
                 <aside>
                     {produtos && produtos.map(item => (
                         <li key={item.id}>
                             <AnimeLeft>
-                                <strong>{item.name}</strong>
-                                <p>{Valores(item.price)}</p>
+                                <strong>({item.qtd}x) {item.name}</strong>
+                                <p>{Valores(item.subtotal)}</p>
 
                             </AnimeLeft>
                         </li>
@@ -89,6 +92,8 @@ function Carrinho() {
 
 
                 </aside>
+
+
             </Card>
         </AnimeLeft>
     )

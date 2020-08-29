@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiStar } from 'react-icons/fi';
-import { HeaderContainer } from '../Restaurantes/styles'
-import { HomeContainer } from './styles';
+
+import { AnimeLeft } from '../../styles';
+import { HeaderContainer } from '../Restaurantes/styles';
+import { ConfirmacaoCarrinho } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 function Confirmacao() {
 
+    const navigate = useNavigate();
+
     const [rates,] = useState([1, 2, 3, 4, 5]);
     const [rate, setRate] = useState(0);
-    const [previous,] = useState(0);
+    const [previous, setPrevious] = useState(0);
+    const [avaliado, setAvaliado] = useState(false);
 
     function handle(r) {
 
         setRate(r);
-        console.log('r', r)
+        setAvaliado(true);
+
+        setTimeout(() => {
+            navigate('/');
+        }, 3000);
     }
 
 
@@ -20,23 +30,25 @@ function Confirmacao() {
     function MouseHover(r) {
 
         if (previous === undefined) {
-            previous = rate;
+            setPrevious(rate);
         }
 
-        rate = r;
+        setRate(r);
+
+
     }
 
 
     return (
-        <div>
 
-            <HeaderContainer>
-                <HomeContainer>
+        <HeaderContainer>
+            <ConfirmacaoCarrinho>
 
+                <AnimeLeft>
 
                     <h2>Pedido Conluído.</h2>
                     <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando! </p>
-                    <h3>Avalie sua experiência:</h3>
+                    <p><strong>Avalie</strong> sua experiência:</p>
 
                     {rates.map((item, index) => (
                         <>
@@ -51,16 +63,18 @@ function Confirmacao() {
                         </>
                     ))}
 
-
-                </HomeContainer>
-
-            </HeaderContainer>
+                    {avaliado ? <p>Obrigado pela sua avaliação!</p> : <p></p>}
 
 
+                </AnimeLeft>
+            </ConfirmacaoCarrinho>
+
+        </HeaderContainer>
 
 
-        </div>
+
+
     )
 }
 
-export default Confirmacao
+export default Confirmacao;

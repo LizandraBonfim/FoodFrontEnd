@@ -9,31 +9,39 @@ import Rooouter from './pages/Restaurantes/rotas.js';
 import Login from './pages/User/Login.js';
 import FinalizarCompra from './pages/User/FinalizarCompra.js';
 import Confirmacao from './pages/User/Confirmacao.js';
+import Toast from './components/toast/index.js';
+import ToastContext from './ToastContext.js';
 
 
 function App() {
+
+
   return (
     <BrowserRouter>
-      <ContainerRestaurante>
+      <ToastContext>
 
-        <GlobalStyle />
-        <Header />
+        <ContainerRestaurante>
 
-        <MainContainer>
+          <GlobalStyle />
+          <Header />
 
-          <Routes>
-            <Route path="/" end element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="finalizar" element={<FinalizarCompra />} />
-            <Route path="confirmar" element={<Confirmacao />} />
-            <Route path="restaurantes/*" element={<Rooouter />} />
+          <MainContainer>
 
-          </Routes>
+            <Routes>
+              <Route path="/" end element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="finalizar" element={<FinalizarCompra />} />
+              <Route path="confirmar" element={<Confirmacao />} />
+              <Route path="restaurantes/*" element={<Rooouter />} />
 
-        </MainContainer>
+            </Routes>
 
-        <Footer />
-      </ContainerRestaurante>
+          </MainContainer>
+
+          <Footer />
+        </ContainerRestaurante>
+        <Toast />
+      </ToastContext>
     </BrowserRouter>
   );
 }

@@ -4,10 +4,13 @@ import { FaPlusCircle } from 'react-icons/fa';
 import { api } from '../../services/api';
 import Erros from '../../components/erros';
 import Carrinho from './Carrinho';
-import { AnimeLeft } from '../../styles';
 
-import { RestauranteContainer, RestauranteSection } from './styles';
 import { RestauranteContext } from '../../RestauranteContext';
+import { ToastUser } from '../../ToastContext';
+import { AnimeLeft, Icons } from '../../styles';
+import { RestauranteContainer, RestauranteSection, Div } from './styles';
+
+
 
 function RestauranteMenu() {
 
@@ -16,11 +19,9 @@ function RestauranteMenu() {
     const [error, setError] = useState(false);
 
     const { id } = useParams();
-    const { setProdutos } = useContext(RestauranteContext);
+    const { setProdutos, produtos } = useContext(RestauranteContext);
+    const { setMessage } = useContext(ToastUser);
 
-
-    console.log('menuu', data)
-    console.log('id', id);
 
     useEffect(() => {
         async function fetch() {
@@ -47,10 +48,30 @@ function RestauranteMenu() {
     }, [id]);
 
     function handleClick(item) {
-        console.log('cliquei');
 
-        console.log('item', item);
-        setProdutos((itens) => [...itens, item]);
+        const indexProduto = produtos.findIndex(x => x.id === item.id);
+        setMessage({ message: `Item ${item.id} adicionado.` });
+
+
+        if (indexProduto === -1) {
+            item.qtd = 1;
+            item.subtotal = item.price;
+
+            setProdutos((itens) => [...itens, item]);
+
+            return;
+        }
+
+        let produto = produtos[indexProduto]
+        produto.qtd += 1;
+        produto.subtotal = produto.qtd * produto.price;
+
+        produtos[indexProduto] = produto;
+
+        setProdutos(x => [...produtos]);
+
+
+
     }
 
     if (!data) return <Erros erro={error} />
@@ -66,22 +87,28 @@ function RestauranteMenu() {
                             <img src={require(`../../${item.imagePath}`)}
                                 alt={item.name} />
 
-                            <div>
-                                <strong>{item.name}</strong>
+                            <Div>
+                                <strong> {item.name}</strong>
                                 <p>{item.description}</p>
                                 <strong> {item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>
 
+                                <Icons>
 
-                                <button onClick={() => handleClick(item)}>
-                                    <FaPlusCircle />
-                                    Adicionar
-                                </button>
+                                    <button onClick={() => handleClick(item)}>
+                                        <FaPlusCircle />
+                                        Adicionar
+                                    </button>
+                                </Icons>
 
-                            </div>
+                            </Div>
+
 
 
                         </RestauranteSection>
                     ))}
+
+
+
                 </AnimeLeft>
 
 

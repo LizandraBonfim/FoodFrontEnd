@@ -54,6 +54,8 @@ export const HomeContainer = styled.section`
         }
         
     }
+
+  
 `;
 
 export const Paragrafo = styled.p`
@@ -88,6 +90,18 @@ export const HomeFinalizar = styled.form`
             box-shadow: 0px 1px 0 0 #b9afaf;
         }
 
+        td button{
+            padding: 1px 3px;
+            border: none;
+            background: none;
+            padding: 1px 3px;
+            color: #004296;
+            font-weight: bold;
+            font-size: 1.8em;
+            margin: 0 1rem;
+            cursor: pointer;
+        }
+
         tbody{
             background-color: #f9f9f9;
             text-align: center;
@@ -100,21 +114,31 @@ export const HomeFinalizar = styled.form`
         right: 8px;
     }
 
-    button{
-            background: #00a65a;
-            border: none;
-            color: #fff;
-            outline: none;
-            cursor: pointer;
-            margin-top: 1rem;
-            padding: 5px;
-            transition: .2s;
-            border-radius: 5px;
+    
+`;
 
-            &:hover{
-                opacity: .6;
-            }
-       }
+export const Button = styled.button`
+
+    background: #00a65a;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 5px;
+    transition: .2s;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+
+    svg{
+        padding-right: 5px;
+    }
+
+    &:hover{
+        opacity: .6;
+    }
+
 `;
 
 export const Grid = styled.div`
@@ -149,4 +173,20 @@ export const Radio = styled.div`
     label{
         margin-left: 1rem;
     }
+`;
+
+export const ConfirmacaoCarrinho = styled(HomeContainer)`
+
+    color: #333;
+    line-height: 3;
+    padding-bottom: 2rem;
+    h2{
+        font-size: 2.2rem;
+
+    }
+
+    svg{
+        cursor: pointer;
+    }
+
 `;

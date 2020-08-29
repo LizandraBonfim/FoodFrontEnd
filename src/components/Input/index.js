@@ -7,7 +7,6 @@ import Error from '../erros/index';
 
 function Input({ type, name, value, placeholder, error, onChange, onBlur }) {
 
-    console.log('error', error)
     return (
         <Container>
             {type === 'email'
