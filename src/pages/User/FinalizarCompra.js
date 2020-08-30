@@ -22,6 +22,7 @@ import {
 } from './styles';
 import { ToastUser } from '../../ToastContext';
 import { useEffect } from 'react';
+import Image from '../../components/Image';
 
 function FinalizarCompra() {
     const navigate = useNavigate();
@@ -140,7 +141,7 @@ function FinalizarCompra() {
                 <Container>
                     <Grid style={{ alignItems: 'center' }}>
                         <h2>Ops... Carrinho vazio</h2>
-                        <img src={cart} alt="Cart" />
+                        <Image src={cart} alt="Cart" />
                     </Grid>
                 </Container>
             </HomeContainer>

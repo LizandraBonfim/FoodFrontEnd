@@ -9,6 +9,7 @@ import Erros from '../../components/erros';
 import loved from '../../assets/img/reactions/loved.png';
 import pissed from '../../assets/img/reactions/pissed.png';
 import soso from '../../assets/img/reactions/soso.png';
+import Image from '../../components/Image';
 
 function RestauranteAvaliacao({ item }) {
 
@@ -64,7 +65,7 @@ function RestauranteAvaliacao({ item }) {
                     <DisplayFlex>
 
 
-                        <img src={Rating(list.rating)} alt="" />
+                        <Image src={Rating(list.rating)} alt="" />
                         <p>{list.name} <br></br>
 
 

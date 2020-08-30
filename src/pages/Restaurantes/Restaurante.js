@@ -80,18 +80,6 @@ function Restaurante() {
 
             </Content>
 
-            {/* {search &&
-
-                <AnimeTop style={{ marginBottom: '1rem' }}>
-                    <Input
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Pesquise um restaurante"
-                        style={{ width: '100%' }}
-                    />
-
-                </AnimeTop>
-            } */}
             <ul>
 
                 {dataFiltered && dataFiltered.map(item => (

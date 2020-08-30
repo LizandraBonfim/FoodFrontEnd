@@ -4,6 +4,7 @@ import { FaHome } from 'react-icons/fa';
 
 import { api } from '../../services/api';
 import Erros from '../../components/erros';
+import Image from '../../components/Image';
 import { Avaliacao, Icons } from '../../styles';
 import { HeaderContainer, DisplayFlex, Section } from './styles';
 
@@ -51,24 +52,27 @@ function RestauranteHeader() {
         <>
             <HeaderContainer>
 
+                <DisplayFlex>
+                    <Icons >
+                        <FaHome />
+                        {data.name}
+                    </Icons>
+                    <Avaliacao>
+                        <p>
+                            {data.rating}
+                        </p>
+                    </Avaliacao>
+                </DisplayFlex>
+
                 {data && (
                     <>
-                        <DisplayFlex>
-                            <Icons >
-                                <FaHome />
-                                {data.name}
-                            </Icons>
-                            <Avaliacao>
-                                <p>
-                                    {data.rating}
-                                </p>
-                            </Avaliacao>
-                        </DisplayFlex>
-
 
                         <Section>
-                            <img src={require(`../../${data.imagePath}`)}
-                                alt={data.name} />
+
+                            <Image
+                                src={require(`../../${data.imagePath}`)}
+                                alt={data.name}
+                            />
 
                             <span>
 

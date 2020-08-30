@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { RestauranteContext } from '../../RestauranteContext';
 import { useNavigate } from 'react-router-dom';
 import { Avaliacao } from '../../styles';
+import Image from '../../components/Image';
 
 function Detalhes({ item }) {
 
@@ -22,7 +23,7 @@ function Detalhes({ item }) {
         <li onClick={handleClick}>
             <figure>
 
-                <img src={require(`../../${item.imagePath}`)}
+                <Image src={require(`../../${item.imagePath}`)}
                     alt={item.name} />
             </figure>
 
