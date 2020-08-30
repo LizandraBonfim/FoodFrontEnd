@@ -189,8 +189,6 @@ export const RestauranteContainer = styled.section`
         img{
             height: 100%;
         }
-
-        div {line-height: 1; margin-top: 1rem;}
         
     }
 
@@ -203,7 +201,8 @@ export const Div = styled.div`
 
     @media(max-width: 60rem){
         margin-left: 0;
-
+        
+        line-height: 1; margin-top: 1rem;
     }
 `;
 
@@ -212,11 +211,6 @@ export const RestauranteSection = styled.section`
     border-radius: .5rem;
     background: #fff;
     display: flex;
-
-    /* div{
-        line-height: 2;
-        margin-left: 3rem;
-    } */
 
     button{
         background: none;
@@ -235,6 +229,8 @@ export const RestauranteSection = styled.section`
 
     @media(max-width: 60rem){
         padding: 0rem;
+        grid-template-columns: 1fr 1fr;
+        display: grid;
         button {margin-bottom: 0.8rem;}
 
     }

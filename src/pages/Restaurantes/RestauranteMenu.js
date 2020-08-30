@@ -7,9 +7,9 @@ import Carrinho from './Carrinho';
 
 import { RestauranteContext } from '../../RestauranteContext';
 import { ToastUser } from '../../ToastContext';
-import Image from '../../components/Image';
 import { AnimeLeft, Icons } from '../../styles';
 import { RestauranteContainer, RestauranteSection, Div } from './styles';
+import Image from '../../components/Image';
 
 
 

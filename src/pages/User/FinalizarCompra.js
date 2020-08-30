@@ -22,12 +22,14 @@ import {
 } from './styles';
 import { ToastUser } from '../../ToastContext';
 import { useEffect } from 'react';
+import useMedia from '../../hooks/useMedia';
 import Image from '../../components/Image';
 
 function FinalizarCompra() {
     const navigate = useNavigate();
 
     const { produtos, login, setProdutos } = useContext(RestauranteContext);
+    const eMobile = useMedia('(max-width: 40rem)');
 
 
     const nome = useForm();
@@ -190,7 +192,7 @@ function FinalizarCompra() {
                                 <tr>
                                     <th>Quantidade</th>
                                     <th>Item</th>
-                                    <th>Descrição</th>
+                                    {!eMobile && <th>Descrição</th>}
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
@@ -207,7 +209,7 @@ function FinalizarCompra() {
                                             </DisplayFlex>
                                         </td>
                                         <td>{item.name}</td>
-                                        <td>{item.description}</td>
+                                        {!eMobile && <td>{item.description}</td>}
                                         <td>{item.subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                                     </tr>
 

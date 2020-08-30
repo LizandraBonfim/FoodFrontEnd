@@ -4,9 +4,9 @@ import { FaHome } from 'react-icons/fa';
 
 import { api } from '../../services/api';
 import Erros from '../../components/erros';
-import Image from '../../components/Image';
 import { Avaliacao, Icons } from '../../styles';
 import { HeaderContainer, DisplayFlex, Section } from './styles';
+import Image from '../../components/Image';
 
 
 
