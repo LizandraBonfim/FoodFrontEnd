@@ -72,7 +72,7 @@ export const Content = styled.div`
             position: absolute;
             top: 7.5rem;
             right: 10rem;
-            z-index: 1000;
+            z-index: 1;
             background: none;
             border: none;
             cursor: pointer;
@@ -186,9 +186,9 @@ export const RestauranteContainer = styled.section`
     @media(max-width: 60rem){
         grid-template-columns: 1fr;
 
-        img{
+        /* img{
             height: 100%;
-        }
+        } */
         
     }
 
