@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const HomeContainer = styled.section`
 
@@ -52,11 +52,46 @@ export const HomeContainer = styled.section`
     }
 `;
 
+export const DisplayFlex = styled.div`
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export const Content = styled.div`
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         justify-content: space-between;
         align-items: center;
+
+        button {
+            position: absolute;
+            top: 106px;
+            right: 39px;
+            z-index: 1000;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
 `;
+
+const animeTop = keyframes`
+  to{
+    opacity: 1;
+    transform: initial;
+  }
+`
+
+export const AnimeTop = styled.div`
+  opacity: 0;
+  transform: translateX(25px);
+  animation: ${animeTop} .5s forwards;
+
+`;
+
+
 
 export const HeaderContainer = styled.section`
 
@@ -154,6 +189,11 @@ export const RestauranteContainer = styled.section`
 export const Div = styled.div`
     line-height: 2;
     margin-left: 3rem;
+
+    @media(max-width: 60rem){
+        margin-left: 0;
+
+    }
 `;
 
 export const RestauranteSection = styled.section`
@@ -188,6 +228,31 @@ export const RestauranteSection = styled.section`
 
     }
 
+`;
+
+export const ButtonMobileMenu = styled.nav`
+
+        z-index: 1000;
+    button{
+        border-radius: 58%;
+        background: #eee;
+        width: 44px;
+        height: 41px;
+        position: fixed;
+        bottom: 2rem;
+        right: 1rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        span{
+            color: red;
+            padding-left: .2rem;
+            font-weight: bold;
+        }
+
+    }
+   
 `;
 
 

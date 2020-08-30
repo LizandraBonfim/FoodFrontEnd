@@ -10,7 +10,7 @@ import useForm from '../../hooks/useForm';
 
 import { RestauranteContext } from '../../RestauranteContext';
 import { AnimeLeft } from '../../styles';
-import { Content } from '../Restaurantes/styles';
+import { DisplayFlex } from '../Restaurantes/styles';
 import {
     Container,
     HomeFinalizar,
@@ -198,12 +198,12 @@ function FinalizarCompra() {
                                 <tbody>
                                     <tr key={item.id}>
                                         <td>
-                                            <Content>
+                                            <DisplayFlex>
 
                                                 <button onClick={() => handleMenos(item)}> - </button>
                                                 {item.qtd}
                                                 <button onClick={() => handleMais(item)}> + </button>
-                                            </Content>
+                                            </DisplayFlex>
                                         </td>
                                         <td>{item.name}</td>
                                         <td>{item.description}</td>

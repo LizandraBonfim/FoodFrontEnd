@@ -5,7 +5,7 @@ import { FaHome } from 'react-icons/fa';
 import { api } from '../../services/api';
 import Erros from '../../components/erros';
 import { Avaliacao, Icons } from '../../styles';
-import { HeaderContainer, Content, Section } from './styles';
+import { HeaderContainer, DisplayFlex, Section } from './styles';
 
 
 
@@ -53,7 +53,7 @@ function RestauranteHeader() {
 
                 {data && (
                     <>
-                        <Content>
+                        <DisplayFlex>
                             <Icons >
                                 <FaHome />
                                 {data.name}
@@ -63,7 +63,7 @@ function RestauranteHeader() {
                                     {data.rating}
                                 </p>
                             </Avaliacao>
-                        </Content>
+                        </DisplayFlex>
 
 
                         <Section>

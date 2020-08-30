@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../services/api';
 import { Avaliacao, AnimeLeft } from '../../styles';
-import { Content, Reviews } from './styles';
+import { DisplayFlex, Reviews } from './styles';
 import Erros from '../../components/erros';
 
 
@@ -61,7 +61,7 @@ function RestauranteAvaliacao({ item }) {
         <Reviews>
             {data && data.map(list => (
                 <AnimeLeft key={list.id}>
-                    <Content>
+                    <DisplayFlex>
 
 
                         <img src={Rating(list.rating)} alt="" />
@@ -77,7 +77,7 @@ function RestauranteAvaliacao({ item }) {
                             </p>
                         </Avaliacao>
 
-                    </Content>
+                    </DisplayFlex>
 
                     <span>{list.comments}</span>
                 </AnimeLeft>

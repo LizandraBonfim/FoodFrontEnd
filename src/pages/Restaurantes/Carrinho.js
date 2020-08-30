@@ -4,7 +4,9 @@ import { FaShoppingCart, FaTrashAlt, FaCreditCard } from 'react-icons/fa';
 
 import { RestauranteContext } from '../../RestauranteContext';
 import { AnimeLeft, Icons } from '../../styles';
-import { Card, Content } from './styles';
+import { Card, DisplayFlex } from './styles';
+import MenuMobile from './MenuMobile';
+
 
 function Carrinho() {
 
@@ -12,11 +14,11 @@ function Carrinho() {
     const { produtos, setProdutos, login } = useContext(RestauranteContext);
     const [valores, setValores] = useState([]);
 
+
     function Valores(produto) {
         const price = produto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
         return price;
-
 
     }
 
@@ -42,60 +44,62 @@ function Carrinho() {
         if (!login) navigate('/login');
         else navigate('/finalizar');
 
-
-
     }
 
 
     return (
-        <AnimeLeft style={{ position: 'relative', zIndex: '-1' }}>
-            <Card>
-                <Icons>
+        <>
+            <MenuMobile />
+            <AnimeLeft style={{ position: 'relative', zIndex: '-1' }}>
 
-                    <h1>
-                        <FaShoppingCart />
-                        Carrinho
-                 </h1>
-                </Icons>
 
-                <aside>
-                    {produtos && produtos.map(item => (
-                        <li key={item.id}>
-                            <AnimeLeft>
-                                <strong>({item.qtd}x) {item.name}</strong>
-                                <p>{Valores(item.subtotal)}</p>
+                <Card>
+                    <Icons>
 
-                            </AnimeLeft>
-                        </li>
+                        <h1>
+                            <FaShoppingCart /> Carrinho
+                            </h1>
+                    </Icons>
 
-                    ))}
+                    <aside>
+                        {produtos && produtos.map(item => (
+                            <li key={item.id}>
+                                <AnimeLeft>
+                                    <strong>({item.qtd}x) {item.name}</strong>
+                                    <p>{Valores(item.subtotal)}</p>
 
-                    {valores > 0
-                        ? <div><p>Total : </p><strong> R$ {valores}</strong> </div>
-                        : <span>Seu carrinho está vazio!</span>
-                    }
+                                </AnimeLeft>
+                            </li>
 
-                    {produtos && valores > 0
-                        &&
-                        <Content>
-                            <button onClick={handleLimpar}>
-                                <FaTrashAlt />
+                        ))}
+
+                        {valores > 0
+                            ? <div><p>Total : </p><strong> R$ {valores}</strong> </div>
+                            : <span>Seu carrinho está vazio!</span>
+                        }
+
+                        {produtos && valores > 0
+                            &&
+                            <DisplayFlex>
+                                <button onClick={handleLimpar}>
+                                    <FaTrashAlt />
                                 Limpar
                             </button>
 
-                            <button onClick={handleFinalizar}>
-                                <FaCreditCard />
+                                <button onClick={handleFinalizar}>
+                                    <FaCreditCard />
                                 Fechar pedido
                             </button>
-                        </Content>
-                    }
+                            </DisplayFlex>
+                        }
 
 
-                </aside>
+                    </aside>
 
 
-            </Card>
-        </AnimeLeft>
+                </Card>
+            </AnimeLeft>
+        </>
     )
 }
 
