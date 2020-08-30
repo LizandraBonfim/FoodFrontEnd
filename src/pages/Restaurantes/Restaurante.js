@@ -7,6 +7,7 @@ import Erros from '../../components/erros';
 import Input from '../../components/Input';
 import { AnimeLeft } from '../../styles';
 import { HomeContainer, Content, AnimeTop } from './styles';
+import useMedia from '../../hooks/useMedia';
 
 
 function Restaurante() {
@@ -17,6 +18,7 @@ function Restaurante() {
     const [error, setError] = useState(false);
     const [search, setSearch] = useState(false);
 
+    const eMobile = useMedia('(max-width: 40rem)');
 
     console.log(`dataa`, data)
     useEffect(() => {
@@ -65,11 +67,11 @@ function Restaurante() {
 
                 {search &&
 
-                    <AnimeTop style={{ marginBottom: '1rem' }}>
+                    <AnimeTop >
                         <Input
                             onChange={handleChange}
                             type="text"
-                            placeholder="Pesquise um restaurante"
+                            placeholder={eMobile ? "Pesquise..." : "Pesquise um restaurante"}
                             style={{ width: '100%' }}
                         />
 

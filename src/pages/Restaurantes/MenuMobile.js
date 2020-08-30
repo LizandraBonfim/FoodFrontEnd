@@ -12,8 +12,8 @@ import { useContext } from 'react';
 
 function MenuMobile() {
 
-    const [mobile, setMobile] = useState(false);
     const { produtos } = useContext(RestauranteContext);
+    const [mobile, setMobile] = useState(false);
 
 
     const eMobile = useMedia('(max-width: 40rem)');
@@ -25,6 +25,7 @@ function MenuMobile() {
         setMobile(false);
 
     }, [pathname]);
+
     return (
         <>
             {eMobile && (
@@ -35,6 +36,7 @@ function MenuMobile() {
                         <FaShoppingCart />
                         <span>{produtos.length}</span>
                     </button>
+
 
                 </ButtonMobileMenu>
             )}

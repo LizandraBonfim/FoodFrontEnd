@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaShoppingCart, FaTrashAlt, FaCreditCard } from 'react-icons/fa';
 
 import { RestauranteContext } from '../../RestauranteContext';
 import { AnimeLeft, Icons } from '../../styles';
-import { Card, DisplayFlex } from './styles';
-import MenuMobile from './MenuMobile';
+import { Card, DisplayFlex, ButtonMobileMenu, CarrinhoMobile } from './styles';
+import useMedia from '../../hooks/useMedia';
 
 
 function Carrinho() {
@@ -13,6 +13,23 @@ function Carrinho() {
     const navigate = useNavigate();
     const { produtos, setProdutos, login } = useContext(RestauranteContext);
     const [valores, setValores] = useState([]);
+    const [mobile, setMobile] = useState(false);
+
+
+    const eMobile = useMedia('(max-width: 40rem)');
+    const ePc = useMedia('(min-width: 40.1rem)');
+
+    console.log('eMobile', eMobile);
+    console.log('ePc', ePc);
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+
+        setMobile(false);
+
+    }, [pathname]);
+
 
 
     function Valores(produto) {
@@ -49,56 +66,72 @@ function Carrinho() {
 
     return (
         <>
-            <MenuMobile />
-            <AnimeLeft style={{ position: 'relative', zIndex: '-1' }}>
+            {eMobile &&
+                <ButtonMobileMenu style={{ zIndex: '1000' }}>
+                    <button
+                        aria-label="Menu"
+                        onClick={() => setMobile(!mobile)}>
+                        <FaShoppingCart />
+                        <span>{produtos.length}</span>
+                    </button>
 
 
-                <Card>
-                    <Icons>
+                </ButtonMobileMenu>
+            }
 
-                        <h1>
-                            <FaShoppingCart /> Carrinho
+
+            {(mobile || ePc) &&
+                <CarrinhoMobile >
+
+
+                    <Card>
+                        <Icons>
+
+                            <h1>
+                                <FaShoppingCart /> Carrinho
                             </h1>
-                    </Icons>
+                        </Icons>
 
-                    <aside>
-                        {produtos && produtos.map(item => (
-                            <li key={item.id}>
-                                <AnimeLeft>
-                                    <strong>({item.qtd}x) {item.name}</strong>
-                                    <p>{Valores(item.subtotal)}</p>
+                        <aside>
+                            {produtos && produtos.map(item => (
+                                <li key={item.id}>
+                                    <AnimeLeft>
+                                        <strong>({item.qtd}x) {item.name}</strong>
+                                        <p>{Valores(item.subtotal)}</p>
 
-                                </AnimeLeft>
-                            </li>
+                                    </AnimeLeft>
+                                </li>
 
-                        ))}
+                            ))}
 
-                        {valores > 0
-                            ? <div><p>Total : </p><strong> R$ {valores}</strong> </div>
-                            : <span>Seu carrinho está vazio!</span>
-                        }
+                            {valores > 0
+                                ? <div><p>Total : </p><strong> R$ {valores}</strong> </div>
+                                : <span>Seu carrinho está vazio!</span>
+                            }
 
-                        {produtos && valores > 0
-                            &&
-                            <DisplayFlex>
-                                <button onClick={handleLimpar}>
-                                    <FaTrashAlt />
+                            {produtos && valores > 0
+                                &&
+                                <DisplayFlex>
+                                    <button onClick={handleLimpar}>
+                                        <FaTrashAlt />
                                 Limpar
                             </button>
 
-                                <button onClick={handleFinalizar}>
-                                    <FaCreditCard />
+                                    <button onClick={handleFinalizar}>
+                                        <FaCreditCard />
                                 Fechar pedido
                             </button>
-                            </DisplayFlex>
-                        }
+                                </DisplayFlex>
+                            }
 
 
-                    </aside>
+                        </aside>
 
 
-                </Card>
-            </AnimeLeft>
+                    </Card>
+                </CarrinhoMobile>
+            }
+
         </>
     )
 }

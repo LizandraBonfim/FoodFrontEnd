@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { AnimeLeft } from '../../styles';
 
 export const HomeContainer = styled.section`
 
@@ -64,15 +65,27 @@ export const Content = styled.div`
         grid-template-columns: 1fr 1fr;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 2rem;
+        height: 4rem;
 
         button {
             position: absolute;
-            top: 106px;
-            right: 39px;
+            top: 7.5rem;
+            right: 10rem;
             z-index: 1000;
             background: none;
             border: none;
             cursor: pointer;
+        }
+
+        @media(max-width: 60rem){
+            h2{
+                font-size: 1rem;
+            }
+
+            button{
+                right: 3rem;
+            }
         }
 
 `;
@@ -86,12 +99,10 @@ const animeTop = keyframes`
 
 export const AnimeTop = styled.div`
   opacity: 0;
-  transform: translateX(25px);
+  transform: translateX(1rem);
   animation: ${animeTop} .5s forwards;
 
 `;
-
-
 
 export const HeaderContainer = styled.section`
 
@@ -234,6 +245,7 @@ export const ButtonMobileMenu = styled.nav`
 
         z-index: 1000;
     button{
+        box-shadow:-1px -1px 7px 3px rgba(0,0,0,0.5);
         border-radius: 58%;
         background: #eee;
         width: 44px;
@@ -254,8 +266,6 @@ export const ButtonMobileMenu = styled.nav`
     }
    
 `;
-
-
 
 export const Reviews = styled.section`
     display: grid;
@@ -305,6 +315,7 @@ export const Card = styled.section`
    h1{
         text-align: center;
         font-size: 1.3rem;
+        margin-top: .5rem;
    }
 
    span{
@@ -357,3 +368,17 @@ export const Card = styled.section`
     }
 `;
 
+export const CarrinhoMobile = styled(AnimeLeft)`
+
+    @media(max-width: 60rem){
+        position: fixed;
+        z-index: 1000;
+        bottom: 6rem;
+        width: 90%;
+
+        section{
+            box-shadow: -1px -1px 7px 3px rgba(0,0,0,0.5);
+        }
+    }
+
+`;
