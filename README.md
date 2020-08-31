@@ -7,4 +7,6 @@
 ReactJS, JavaScript, Axios e Styled-components.
 
 
-Segue link da publicação:  [running tests](https://liz-dev.herokuapp.com/).
+Para acessar o projeto :  [clique aqui](https://liz-dev.herokuapp.com/).
+
+Video no Youtube : [clique aqui](https://www.youtube.com/watch?v=GMKVqa21Oqc/).
