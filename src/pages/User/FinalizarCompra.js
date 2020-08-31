@@ -130,6 +130,7 @@ function FinalizarCompra() {
 
             setError(false);
             navigate('/confirmar');
+            setProdutos([]);
             setMessage({ message: 'Compra efetuada com sucesso!' })
             return 'Compra efetuada com sucesso!';
         }
