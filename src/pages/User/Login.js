@@ -10,8 +10,9 @@ import { ToastUser } from '../../ToastContext';
 
 
 function Login() {
+
     const navigate = useNavigate();
-    const { setLogin } = useContext(RestauranteContext);
+    const { setLogin, produtos } = useContext(RestauranteContext);
     const [dados, setDados] = useState({ email: 'user@hotmail.com', password: '1234' });
     const [error, setError] = useState(false);
     const { setMessage } = useContext(ToastUser);
@@ -23,7 +24,8 @@ function Login() {
             setLogin(true);
             setError(false);
 
-            navigate('/restaurantes');
+            if (produtos) navigate('/finalizar');
+            else navigate('/restaurantes');
 
         } else {
             setError("Dados inválidos. Favor verificar.");

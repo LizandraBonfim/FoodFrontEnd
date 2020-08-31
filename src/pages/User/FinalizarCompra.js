@@ -123,9 +123,9 @@ function FinalizarCompra() {
             endereco.validate() && numero.validate() && complemento.validate() && formPag.validate()) {
 
             if (email.value !== confirmacao_email.value) {
+                setError(true);
                 setMessage({ message: 'Os emails não combinam..' });
-
-
+                return;
             }
 
             setError(false);
