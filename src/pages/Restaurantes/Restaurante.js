@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 import { AnimeLeft } from '../../styles';
 import { HomeContainer, Content, AnimeTop } from './styles';
 import useMedia from '../../hooks/useMedia';
+import Loading from '../../components/Loading';
 
 
 function Restaurante() {
@@ -19,18 +20,23 @@ function Restaurante() {
     const [search, setSearch] = useState(false);
 
     const eMobile = useMedia('(max-width: 40rem)');
+    const [loading, setLoading] = useState(false);
 
-    console.log(`dataa`, data)
     useEffect(() => {
         async function fetch() {
 
             try {
+                setLoading(true);
                 setError(false);
                 const response = await api.get('restaurants');
                 setData(response.data);
                 setDataFiltered(response.data)
             } catch{
+                setLoading(false);
                 setError("Ocorreu um erro");
+            } finally {
+                setLoading(false);
+
             }
 
         }
@@ -56,6 +62,7 @@ function Restaurante() {
         setDataFiltered(dados);
     }
 
+    if (loading) return <Loading />;
 
     return (
 

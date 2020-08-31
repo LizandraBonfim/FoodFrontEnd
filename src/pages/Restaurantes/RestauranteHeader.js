@@ -7,6 +7,7 @@ import Erros from '../../components/erros';
 import { Avaliacao, Icons } from '../../styles';
 import { HeaderContainer, DisplayFlex, Section } from './styles';
 import Image from '../../components/Image';
+import Loading from '../../components/Loading';
 
 
 
@@ -21,11 +22,13 @@ function RestauranteHeader() {
 
     const [data, setData] = useState();
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         async function fetch() {
 
             try {
+                setLoading(true);
                 setError(false);
                 const response = await api.get('restaurants', {
                     params: {
@@ -35,7 +38,11 @@ function RestauranteHeader() {
 
                 setData(response.data[0]);
             } catch{
+                setLoading(false);
                 setError("Ocorreu um erro");
+            } finally {
+                setLoading(false);
+
             }
 
         }
@@ -47,6 +54,7 @@ function RestauranteHeader() {
 
 
     if (!data) return <Erros erro={error} />
+    if (loading) return <Loading />
 
     return (
         <>

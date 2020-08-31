@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FiStar } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
+import Loading from '../../components/Loading';
+import { ToastUser } from '../../ToastContext';
 import { AnimeLeft } from '../../styles';
 import { HeaderContainer } from '../Restaurantes/styles';
 import { ConfirmacaoCarrinho } from './styles';
-import { useNavigate } from 'react-router-dom';
 
 function Confirmacao() {
 
@@ -14,15 +16,23 @@ function Confirmacao() {
     const [rate, setRate] = useState(0);
     const [previous, setPrevious] = useState(0);
     const [avaliado, setAvaliado] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const { setMessage } = useContext(ToastUser);
 
     function handle(r) {
 
         setRate(r);
         setAvaliado(true);
 
+        setLoading(true);
+        setMessage({ message: `Você será direcionado para tela inicial.` });
         setTimeout(() => {
             navigate('/');
         }, 3000);
+
+
+
+
     }
 
 
@@ -38,7 +48,7 @@ function Confirmacao() {
 
     }
 
-
+    if (loading) return <Loading />
     return (
 
         <HeaderContainer>
@@ -64,6 +74,7 @@ function Confirmacao() {
                     ))}
 
                     {avaliado ? <p>Obrigado pela sua avaliação!</p> : <p></p>}
+
 
 
                 </AnimeLeft>

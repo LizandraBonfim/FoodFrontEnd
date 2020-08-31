@@ -16,11 +16,8 @@ function Carrinho() {
     const [mobile, setMobile] = useState(false);
 
 
-    const eMobile = useMedia('(max-width: 40rem)');
-    const ePc = useMedia('(min-width: 40.1rem)');
-
-    console.log('eMobile', eMobile);
-    console.log('ePc', ePc);
+    const eMobile = useMedia('(max-width: 60rem)');
+    const ePc = useMedia('(min-width: 60.01rem)');
 
     const { pathname } = useLocation();
 
@@ -119,8 +116,8 @@ function Carrinho() {
 
                                     <button onClick={handleFinalizar}>
                                         <FaCreditCard />
-                                Fechar pedido
-                            </button>
+                                         Fechar pedido
+                                    </button>
                                 </DisplayFlex>
                             }
 

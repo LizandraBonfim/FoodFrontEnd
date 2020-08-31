@@ -9,7 +9,6 @@ function Image({ alt, ...props }) {
         target.style.opacity = 1;
     }
 
-    console.log(`skeleto`, skeleton);
 
     return (
         <Container>

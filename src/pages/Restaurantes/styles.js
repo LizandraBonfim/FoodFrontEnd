@@ -42,7 +42,7 @@ export const HomeContainer = styled.section`
     
     }
 
-    @media(max-width: 60rem){
+    @media(max-width: 40rem){
         ul{
             grid-template-columns: 1fr;
 
@@ -152,7 +152,7 @@ export const Section = styled.section`
         line-height: 2;
     }
 
-    @media(max-width: 60rem){
+    @media(max-width: 40rem){
         grid-template-columns: 1fr;
         gap: 0rem;
 
@@ -199,11 +199,12 @@ export const Div = styled.div`
     line-height: 2;
     margin-left: 3rem;
 
-    @media(max-width: 60rem){
+    @media(max-width: 40rem){
         margin-left: 0;
-        
-        line-height: 1; margin-top: 1rem;
+        line-height: 1; 
+        margin-top: 1rem;
     }
+
 `;
 
 export const RestauranteSection = styled.section`
@@ -227,13 +228,15 @@ export const RestauranteSection = styled.section`
         }
     }
 
-    @media(max-width: 60rem){
+    @media(max-width: 50rem){
         padding: 0rem;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(11rem,auto) 1fr;
         display: grid;
         button {margin-bottom: 0.8rem;}
 
     }
+
+   
 
 `;
 

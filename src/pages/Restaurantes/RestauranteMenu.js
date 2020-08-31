@@ -39,6 +39,7 @@ function RestauranteMenu() {
                 );
                 setData(response.data);
             } catch{
+
                 setError("Ocorreu um erro");
             }
 
