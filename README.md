@@ -3,10 +3,10 @@
 
 ### Projeto focado no front-end.
 
-### Tecnologias utilizadas: 
+## Tecnologias utilizadas: 
 ReactJS, JavaScript, Axios e Styled-components.
 
 
-Para acessar o projeto :  [clique aqui](https://liz-dev.herokuapp.com/).
+Para acessar o projeto :  [Clique aqui](https://liz-dev.herokuapp.com/).
 
-Video no Youtube : [clique aqui](https://www.youtube.com/watch?v=GMKVqa21Oqc/).
+Video no Youtube : [Clique aqui](https://www.youtube.com/watch?v=GMKVqa21Oqc/).
