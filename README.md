@@ -17,7 +17,8 @@
 
 <img src="/src/assets/avaliacao.png">
 
-#Carrinho versão mobile 
+##Carrinho versão mobile 
+
 <img src="/src/assets/carrinhomobile.png">
 
 
