@@ -7,8 +7,6 @@
 
 <img src="/src/assets/restaurantes.png">
 
-<img src="/src/assets/adiciona.png">
-
 <img src="/src/assets/compra.png">
 
 <img src="/src/assets/finalize1.png">
